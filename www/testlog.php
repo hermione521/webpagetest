@@ -19,6 +19,9 @@ $all       = !empty($_REQUEST['all']);
 $repeat   = !empty($_REQUEST['repeat']);
 $nolimit   = !empty($_REQUEST['nolimit']);
 $csv       = !strcasecmp($_GET["f"], 'csv');
+// add label and url filter, ganyue
+$urlFilter = $_GET["url"];
+$labelFilter = $_GET["label"];
 
 $includeip      = false;
 $includePrivate = false;
@@ -176,6 +179,12 @@ else
 
                                         if( $onlyVideo and !$video )
                                             $ok = false;
+                                        
+                                        // url and label filter, ganyue
+										if ($urlFilter and !stristr($url, $urlFilter))
+											$ok = false;
+										if ($labelFilter and !stristr($label, $labelFilter))
+											$ok = false;
 
                                         if ($ok && !$all) {
                                             $ok = false;
