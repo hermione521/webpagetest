@@ -181,6 +181,10 @@ function LoadTestData() {
             $test['name'] = str_replace('http://', '', $test['name']);
             $test['name'] = str_replace('https://', '', $test['name']);
         }
+        // modified by ganyue
+        $tempLoc = str_replace('<b>', '', $test['location']);
+		$tempLoc = str_replace('</b>', '', $tempLoc);
+		$test['name'] = $tempLoc;
         $test['index'] = $count;
 
         $videoPath = "./$testPath/video_{$test['run']}";
